@@ -26,5 +26,7 @@ namespace Repositories
         public DbSet<MenuItem> MenuItems { get; set; }
         public DbSet<MenuItemOption> MenuItemOptions { get; set; }
         public DbSet<MenuItemOptionItem> MenuItemOptionItems { get; set; }
+
+        public DbSet<User> Users { get; set; }
     }
 }
