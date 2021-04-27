@@ -20,5 +20,11 @@ namespace Repositories
         public DbSet<Tag> Tags { get; set; }
         public DbSet<Category> Categories { get; set; }
         public DbSet<Restaurant> Restaurants { get; set; }
+        public DbSet<Branch> Branches { get; set; }
+        public DbSet<Menu> Menus { get; set; }
+        public DbSet<MenuSection> MenuSections { get; set; }
+        public DbSet<MenuItem> MenuItems { get; set; }
+        public DbSet<MenuItemOption> MenuItemOptions { get; set; }
+        public DbSet<MenuItemOptionItem> MenuItemOptionItems { get; set; }
     }
 }

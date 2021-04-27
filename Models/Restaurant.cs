@@ -30,6 +30,8 @@ namespace Models
 
         public virtual ICollection<Tag> Tags { get; set; }
 
+        public virtual Menu Menu { get; set; }
+
         public Restaurant()
         {
             Tags = new HashSet<Tag>();
