@@ -1,12 +1,12 @@
 ﻿using System;
 
-namespace console
+namespace Client
 {
     class Program
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Expresso.Net!");
+            Console.WriteLine("Hello World!");
         }
     }
 }
