@@ -35,5 +35,12 @@ namespace Models
 
         [DatabaseGenerated(DatabaseGeneratedOption.Computed)]
         public DateTime CreatedAt { get; set; }
+
+        public virtual ICollection<Address> Addresses { get; set; }
+
+        public User()
+        {
+            Addresses = new HashSet<Address>();
+        }
     }
 }

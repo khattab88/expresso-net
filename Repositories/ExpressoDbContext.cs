@@ -28,5 +28,6 @@ namespace Repositories
         public DbSet<MenuItemOptionItem> MenuItemOptionItems { get; set; }
 
         public DbSet<User> Users { get; set; }
+        public DbSet<Address> Addresses { get; set; }
     }
 }
