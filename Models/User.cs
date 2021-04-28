@@ -24,9 +24,9 @@ namespace Models
         public string Password { get; set; }
         public string PasswordConfirm { get; set; }
 
-        public DateTime PasswordChangedAt { get; set; }
+        public DateTime? PasswordChangedAt { get; set; }
         public string PasswordResetToken { get; set; }
-        public DateTime PasswordResetExpiresAt { get; set; }
+        public DateTime? PasswordResetExpiresAt { get; set; }
 
         public string Mobile { get; set; }
         public DateTime BirthDate { get; set; }
