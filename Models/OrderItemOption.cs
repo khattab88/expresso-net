@@ -8,19 +8,20 @@ using System.Threading.Tasks;
 
 namespace Models
 {
-    public class MenuItemOptionItem
+    public class OrderItemOption
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public Guid Id { get; set; }
-        public string Name { get; set; }
 
-        public double Value { get; set; }
+        [Display(Name = "OrderItem")]
+        public Guid OrderItemId { get; set; }
+        public virtual OrderItem OrderItem { get; set; }
 
         [Display(Name = "MenuItemOption")]
         public Guid MenuItemOptionId { get; set; }
         public virtual MenuItemOption MenuItemOption { get; set; }
 
-        public ICollection<OrderItemOption> OrderItemOptions { get; set; }
+        public virtual ICollection<MenuItemOptionItem> MenuItemOptionItems { get; set; }
     }
 }

@@ -38,9 +38,12 @@ namespace Models
 
         public virtual ICollection<Address> Addresses { get; set; }
 
+        public virtual ICollection<Order> Orders { get; set; }
+
         public User()
         {
             Addresses = new HashSet<Address>();
+            Orders = new HashSet<Order>();
         }
     }
 }

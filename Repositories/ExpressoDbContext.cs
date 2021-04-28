@@ -17,10 +17,12 @@ namespace Repositories
         public DbSet<Country> Countries { get; set; }
         public DbSet<City> Cities { get; set; }
         public DbSet<Area> Areas { get; set; }
+
         public DbSet<Tag> Tags { get; set; }
         public DbSet<Category> Categories { get; set; }
         public DbSet<Restaurant> Restaurants { get; set; }
         public DbSet<Branch> Branches { get; set; }
+
         public DbSet<Menu> Menus { get; set; }
         public DbSet<MenuSection> MenuSections { get; set; }
         public DbSet<MenuItem> MenuItems { get; set; }
@@ -29,5 +31,9 @@ namespace Repositories
 
         public DbSet<User> Users { get; set; }
         public DbSet<Address> Addresses { get; set; }
+
+        public DbSet<Order> Orders { get; set; }
+        public DbSet<OrderItem> OrderItems { get; set; }
+        public DbSet<OrderItemOption> OrderItemOptions { get; set; }
     }
 }
