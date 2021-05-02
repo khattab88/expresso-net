@@ -1,4 +1,5 @@
 ﻿using Models;
+using Repositories.EntityConfigurations;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
@@ -35,5 +36,28 @@ namespace Repositories
         public DbSet<Order> Orders { get; set; }
         public DbSet<OrderItem> OrderItems { get; set; }
         public DbSet<OrderItemOption> OrderItemOptions { get; set; }
+
+        protected override void OnModelCreating(DbModelBuilder modelBuilder)
+        {
+            modelBuilder.Configurations.Add(new CountryConfiguration());
+            modelBuilder.Configurations.Add(new CityConfiguration());
+            modelBuilder.Configurations.Add(new AreaConfiguration());
+
+            modelBuilder.Configurations.Add(new CategoryConfiguration());
+            modelBuilder.Configurations.Add(new TagConfiguration());
+
+            modelBuilder.Configurations.Add(new RestaurantConfiguration());
+            modelBuilder.Configurations.Add(new BranchConfiguration());
+
+            modelBuilder.Configurations.Add(new MenuSectionConfiguration());
+            modelBuilder.Configurations.Add(new MenuItemConfiguration());
+            modelBuilder.Configurations.Add(new MenuItemOptionConfiguration());
+            modelBuilder.Configurations.Add(new MenuItemOptionItemConfiguration());
+
+            modelBuilder.Configurations.Add(new UserConfiguration());
+            modelBuilder.Configurations.Add(new AddressConfiguration());
+
+            modelBuilder.Configurations.Add(new OrderItemConfiguration());
+        }
     }
 }

@@ -21,7 +21,7 @@ namespace Models
         public byte DeliveryTime { get; set; }
         public decimal DeliveryFee { get; set; }
         public bool SpecialOffres { get; set; }
-        public float Rating { get; set; }
+        public float? Rating { get; set; }
         public DateTime CreatedAt { get; set; }
 
         [Display(Name = "Category")]

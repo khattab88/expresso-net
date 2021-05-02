@@ -29,7 +29,7 @@ namespace Models
         public DateTime? PasswordResetExpiresAt { get; set; }
 
         public string Mobile { get; set; }
-        public DateTime BirthDate { get; set; }
+        public DateTime? BirthDate { get; set; }
 
         public bool Active { get; set; }
 
