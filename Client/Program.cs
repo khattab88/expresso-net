@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Data.Entity;
+using Repositories.Core;
 
 namespace Client
 {
@@ -75,7 +76,21 @@ namespace Client
 
             #endregion
 
+            #region UnitOfWork
 
+            using (var unitOfWork = new UnitOfWork(new ExpressoDbContext())) 
+            {
+                var tag = unitOfWork.Tags.Get(Guid.Parse("c689e49b-9eab-eb11-acc8-8cec4b1e447b"));
+                Console.WriteLine(tag.Name);
+
+                var topTags = unitOfWork.Tags.GetTopPopularTags(5);
+                foreach (var t in topTags)
+                {
+                    Console.WriteLine(t.Name);
+                }
+            }
+
+            #endregion
 
         }
     }
