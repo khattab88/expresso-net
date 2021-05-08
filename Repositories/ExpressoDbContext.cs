@@ -13,7 +13,9 @@ namespace Repositories
     {
         public ExpressoDbContext()
             : base("Expresso") 
-        { }
+        {
+            this.Configuration.LazyLoadingEnabled = false;
+        }
 
         public DbSet<Country> Countries { get; set; }
         public DbSet<City> Cities { get; set; }
