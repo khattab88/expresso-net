@@ -13,6 +13,9 @@ namespace CMS
         {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
+            // Enables Route Attributes
+            routes.MapMvcAttributeRoutes();
+
             routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",
