@@ -1,6 +1,8 @@
-﻿using System;
+﻿using Newtonsoft.Json.Serialization;
+using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Http.Headers;
 using System.Web.Http;
 
 namespace Api
@@ -10,6 +12,17 @@ namespace Api
         public static void Register(HttpConfiguration config)
         {
             // Web API configuration and services
+            config.EnableCors();
+
+            // enable patch document content type
+            config.Formatters.JsonFormatter.SupportedMediaTypes.Add(
+                new MediaTypeHeaderValue("application/json-patch+json"));
+
+            config.Formatters.Remove(config.Formatters.XmlFormatter);
+
+            var settings = GlobalConfiguration.Configuration.Formatters.JsonFormatter.SerializerSettings;
+            settings.ContractResolver = new CamelCasePropertyNamesContractResolver();
+            settings.Formatting = Newtonsoft.Json.Formatting.Indented;
 
             // Web API routes
             config.MapHttpAttributeRoutes();
