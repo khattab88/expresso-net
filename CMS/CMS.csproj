@@ -128,33 +128,61 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\TagsController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\css\bootstrap-overrides.css" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\Images\24410906.jpg" />
+    <Content Include="Content\Images\anonymous.jpg" />
+    <Content Include="Content\css\style.css" />
+    <Content Include="Content\css\template-overrides.css" />
+    <Content Include="Content\css\template.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
-    <Content Include="Scripts\bootstrap.js" />
-    <Content Include="Scripts\bootstrap.min.js" />
-    <None Include="Scripts\jquery-3.4.1.intellisense.js" />
-    <Content Include="Scripts\jquery-3.4.1.js" />
-    <Content Include="Scripts\jquery-3.4.1.min.js" />
-    <Content Include="Scripts\jquery-3.4.1.slim.js" />
-    <Content Include="Scripts\jquery-3.4.1.slim.min.js" />
-    <None Include="Scripts\jquery.validate-vsdoc.js" />
-    <Content Include="Scripts\jquery.validate.js" />
-    <Content Include="Scripts\jquery.validate.min.js" />
-    <Content Include="Scripts\jquery.validate.unobtrusive.js" />
-    <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
-    <Content Include="Scripts\modernizr-2.8.3.js" />
+    <Content Include="Scripts\account.js" />
+    <Content Include="Scripts\alerts.js" />
+    <Content Include="Scripts\chat.js" />
+    <Content Include="Scripts\checkout.js" />
+    <Content Include="Scripts\config.js" />
+    <Content Include="Scripts\country.js" />
+    <Content Include="Scripts\delete-list-item.js" />
+    <Content Include="Scripts\index.js" />
+    <Content Include="Scripts\login.js" />
+    <Content Include="Scripts\mapbox.js" />
+    <Content Include="Content\template\assets\fonts\fa-solid-900.svg" />
+    <Content Include="Content\template\assets\fonts\Pe-icon-7-stroke.svg" />
+    <Content Include="Content\template\assets\scripts\main.js" />
+    <Content Include="Content\template\main.js" />
+    <Content Include="Scripts\Vendor\bootstrap.js" />
+    <Content Include="Scripts\Vendor\bootstrap.min.js" />
+    <Content Include="Content\template\assets\fonts\fa-solid-900.eot" />
+    <Content Include="Content\template\assets\fonts\fa-solid-900.ttf" />
+    <Content Include="Content\template\assets\fonts\fa-solid-900.woff" />
+    <Content Include="Content\template\assets\fonts\fa-solid-900.woff2" />
+    <Content Include="Content\template\assets\fonts\Pe-icon-7-stroke.eot" />
+    <Content Include="Content\template\assets\fonts\Pe-icon-7-stroke.ttf" />
+    <Content Include="Content\template\assets\fonts\Pe-icon-7-stroke.woff" />
+    <None Include="Scripts\Vendor\jquery-3.4.1.intellisense.js" />
+    <Content Include="Scripts\Vendor\jquery-3.4.1.js" />
+    <Content Include="Scripts\Vendor\jquery-3.4.1.min.js" />
+    <Content Include="Scripts\Vendor\jquery-3.4.1.slim.js" />
+    <Content Include="Scripts\Vendor\jquery-3.4.1.slim.min.js" />
+    <None Include="Scripts\Vendor\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\Vendor\jquery.validate.js" />
+    <Content Include="Scripts\Vendor\jquery.validate.min.js" />
+    <Content Include="Scripts\Vendor\jquery.validate.unobtrusive.js" />
+    <Content Include="Scripts\Vendor\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Scripts\Vendor\modernizr-2.8.3.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -166,9 +194,9 @@
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Views\Home\About.cshtml" />
-    <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Shared\_Base.cshtml" />
+    <Content Include="Views\Tags\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -183,8 +211,8 @@
     <Content Include="Content\bootstrap-theme.min.css.map" />
     <Content Include="Content\bootstrap-theme.css.map" />
     <None Include="packages.config" />
-    <Content Include="Scripts\jquery-3.4.1.slim.min.map" />
-    <Content Include="Scripts\jquery-3.4.1.min.map" />
+    <Content Include="Scripts\Vendor\jquery-3.4.1.slim.min.map" />
+    <Content Include="Scripts\Vendor\jquery-3.4.1.min.map" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Models\Models.csproj">

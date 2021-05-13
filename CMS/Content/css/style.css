@@ -1,0 +1,71 @@
+/* line 1, public/css/style.scss */
+tr:hover {
+  cursor: default; }
+
+/* line 5, public/css/style.scss */
+.row-manage {
+  display: flex;
+  justify-content: center; }
+  /* line 9, public/css/style.scss */
+  .row-manage__btn {
+    cursor: pointer; }
+  /* line 14, public/css/style.scss */
+  .row-manage__separator span {
+    margin: 0 .5rem; }
+
+@media (max-width: 992px) {
+  /* line 22, public/css/style.scss */
+  .dropdown-menu {
+    top: 21% !important; } }
+
+@media (max-width: 767.98px) {
+  /* line 28, public/css/style.scss */
+  .dropdown-menu {
+    top: 52% !important; } }
+
+@media (max-width: 567px) {
+  /* line 34, public/css/style.scss */
+  .dropdown-menu {
+    top: 29% !important; } }
+
+/* line 39, public/css/style.scss */
+.alert {
+  position: fixed;
+  top: 2rem;
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+  transform: translateX(-50%);
+  z-index: 9999;
+  font-weight: 400;
+  text-align: center;
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+  -webkit-box-shadow: 0 2rem 4rem rgba(0, 0, 0, 0.25);
+  box-shadow: 0 2rem 4rem rgba(0, 0, 0, 0.25); }
+
+/* line 55, public/css/style.scss */
+.error-box {
+  width: 90%;
+  position: absolute;
+  left: 50%;
+  top: 20%;
+  -webkit-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  text-align: center; }
+
+/* line 67, public/css/style.scss */
+.option-box .card-header {
+  height: 3rem; }
+
+/* line 71, public/css/style.scss */
+.option-box .card-body {
+  padding: .75rem 1.25rem .5rem 1.5rem; }
+
+/* line 79, public/css/style.scss */
+#tag-list .tag {
+  cursor: pointer; }
+  /* line 82, public/css/style.scss */
+  #tag-list .tag--selected {
+    background-color: #27F0AC !important;
+    color: #fff !important; }
