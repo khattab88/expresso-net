@@ -1,4 +1,5 @@
 ﻿using Models;
+using Repositories;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,19 +10,36 @@ namespace CMS.Controllers
 {
     public class TagsController : Controller
     {
+        private readonly ExpressoDbContext _context;
+
+        public TagsController()
+        {
+            _context = new ExpressoDbContext();
+        }
+
         // GET: Tags
         public ActionResult Index()
         {
-            var tags = new List<Tag> 
-            {
-                new Tag { Name = "Offers" },
-                new Tag { Name = "American" }
-            };
+            var tags = _context.Tags.ToList();
 
             return View(tags);
         }
 
-        
+        public ActionResult Edit(string id) 
+        {
+            var tag = _context.Tags.SingleOrDefault(t => t.Id.ToString() == id);
+
+            if (tag == null)
+                return HttpNotFound();
+
+            return View(tag);
+        }
+
+        protected override void Dispose(bool disposing)
+        {
+            _context.Dispose();
+        }
+
 
     }
 }

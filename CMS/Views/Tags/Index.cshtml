@@ -1,5 +1,5 @@
 ﻿
-@model List<Models.Tag>
+@*@model IEnumerable<Models.Tag>*@
 
 @{
     ViewBag.Title = "Tags";
@@ -10,7 +10,8 @@
         <div class="app-page-title mb-0 py-2">
             <div class="page-title-wrapper d-flex justify-content-between">
                 <h1>@ViewBag.Title</h1>
-                <a class="btn btn-lg btn-success" href="@Url.Action("New", "Tags")">Create New</a>
+                @*<a class="btn btn-lg btn-success" href="@Url.Action("New", "Tags")">Create New</a>*@
+                @Html.ActionLink("Create New", "New", "Tags", null, new { @class = "btn btn-lg btn-success" } )
             </div>
         </div>
     </div>
