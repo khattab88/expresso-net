@@ -25,6 +25,11 @@ namespace CMS.Controllers
             return View(tags);
         }
 
+        public ActionResult New() 
+        {
+            return View();
+        }
+
         public ActionResult Edit(string id) 
         {
             var tag = _context.Tags.SingleOrDefault(t => t.Id.ToString() == id);
