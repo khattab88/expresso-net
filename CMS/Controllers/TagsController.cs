@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -11,7 +12,16 @@ namespace CMS.Controllers
         // GET: Tags
         public ActionResult Index()
         {
-            return View();
+            var tags = new List<Tag> 
+            {
+                new Tag { Name = "Offers" },
+                new Tag { Name = "American" }
+            };
+
+            return View(tags);
         }
+
+        
+
     }
 }

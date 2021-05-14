@@ -1,7 +1,63 @@
 ﻿
+@model List<Models.Tag>
+
 @{
     ViewBag.Title = "Tags";
 }
 
-<h2>Tags</h2>
+<div class="row">
+    <div class="col">
+        <div class="app-page-title mb-0 py-2">
+            <div class="page-title-wrapper d-flex justify-content-between">
+                <h1>@ViewBag.Title</h1>
+                <a class="btn btn-lg btn-success" href="@Url.Action("New", "Tags")">Create New</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-lg-8">
+        <div class="main-card mb-3 card mt-3">
+            <div class="card-body">
+                <table class="mb-0 mt-0 table table-striped table-hover">
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Name</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @{ 
+                            var x = 1;
+                        }
+
+                        @foreach (var tag in Model)
+                        {
+                        <tr>
+                            <th scope="row">@string.Format("{0}", x++)</th>
+                            <td>@tag.Name</td>
+                            <td class="text-center">
+                                <div class="row-manage">
+                                    <div class="row-manage__btn">
+                                        <a href="@Url.Action("Edit", "Tags", new { id = tag.Id })" data-id="@tag.Id">Edit</a>
+                                    </div>
+                                    <div class="row-manage__separator">
+                                        <span>|</span>
+                                    </div>
+                                    <div class="row-manage__btn">
+                                        <a class="delete-btn text-danger" data-type="tags" data-id="@tag.Id">Delete</a>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
 
