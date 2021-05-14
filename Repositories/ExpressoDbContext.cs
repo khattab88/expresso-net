@@ -1,4 +1,5 @@
-﻿using Models;
+﻿using Microsoft.AspNet.Identity.EntityFramework;
+using Models;
 using Repositories.EntityConfigurations;
 using System;
 using System.Collections.Generic;
@@ -9,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace Repositories
 {
-    public class ExpressoDbContext : DbContext
+    public class ExpressoDbContext : IdentityDbContext<User>
     {
         public ExpressoDbContext()
             : base("Expresso") 
@@ -32,15 +33,22 @@ namespace Repositories
         public DbSet<MenuItemOption> MenuItemOptions { get; set; }
         public DbSet<MenuItemOptionItem> MenuItemOptionItems { get; set; }
 
-        public DbSet<User> Users { get; set; }
+        // public DbSet<User> Users { get; set; }
         public DbSet<Address> Addresses { get; set; }
 
         public DbSet<Order> Orders { get; set; }
         public DbSet<OrderItem> OrderItems { get; set; }
         public DbSet<OrderItemOption> OrderItemOptions { get; set; }
 
+        public static ExpressoDbContext Create()
+        {
+            return new ExpressoDbContext();
+        }
+
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
+            base.OnModelCreating(modelBuilder);
+
             modelBuilder.Configurations.Add(new CountryConfiguration());
             modelBuilder.Configurations.Add(new CityConfiguration());
             modelBuilder.Configurations.Add(new AreaConfiguration());

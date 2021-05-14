@@ -20,20 +20,20 @@ namespace Repositories.EntityConfigurations
                 .IsRequired()
                 .HasMaxLength(50);
 
-            Property(u => u.Email)
-                .IsRequired()
-                .HasMaxLength(255);
+            //Property(u => u.Email)
+            //    .IsRequired()
+            //    .HasMaxLength(255);
 
-            Property(u => u.Password)
-                .IsRequired()
-                .HasMaxLength(50);
+            //Property(u => u.Password)
+            //    .IsRequired()
+            //    .HasMaxLength(50);
 
-            Property(u => u.PasswordConfirm)
-                .IsRequired()
-                .HasMaxLength(50);
+            //Property(u => u.PasswordConfirm)
+            //    .IsRequired()
+            //    .HasMaxLength(50);
 
-            Property(u => u.PasswordResetToken)
-                .HasMaxLength(500);
+            //Property(u => u.PasswordResetToken)
+            //    .HasMaxLength(500);
 
             Property(u => u.Mobile)
                 .HasMaxLength(50);
