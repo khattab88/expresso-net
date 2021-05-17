@@ -1,0 +1,71 @@
+﻿@*@model IEnumerable<Models.Tag>*@
+
+@{
+    ViewBag.Title = "Countries";
+}
+
+<div class="row">
+    <div class="col">
+        <div class="app-page-title mb-0 py-2">
+            <div class="page-title-wrapper d-flex justify-content-between">
+                <h1>@ViewBag.Title</h1>
+                @*<a class="btn btn-lg btn-success" href="@Url.Action("New", "Countries")">Create New</a>*@
+                @Html.ActionLink("Create New", "New", "Countries", null, new { @class = "btn btn-lg btn-success" })
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-lg-8">
+        <div class="main-card mb-3 card mt-3">
+            <div class="card-body">
+                <table class="mb-0 mt-0 table table-striped table-hover">
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Name</th>
+                            <th>Alias</th>
+                            <th>Slug</th>
+                            <th>Currency</th>
+                            <th>Image</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @{
+                            var x = 1;
+                        }
+
+                        @foreach (var country in Model)
+                        {
+                        <tr>
+                            <th scope="row">@string.Format("{0}", x++)</th>
+                            <td>@country.Name</td>
+                            <td>@country.Alias</td>
+                            <td>@country.Slug</td>
+                            <td>@country.Currency</td>
+                            <td>@country.Image</td>
+                            <td class="text-center">
+                                <div class="row-manage">
+                                    <div class="row-manage__btn">
+                                        <a href="@Url.Action("Edit", "Countries", new { id = country.Id })" data-id="@country.Id">Edit</a>
+                                    </div>
+                                    <div class="row-manage__separator">
+                                        <span>|</span>
+                                    </div>
+                                    <div class="row-manage__btn">
+                                        <a class="delete-btn text-danger" data-type="countries" data-id="@country.Id">Delete</a>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+
