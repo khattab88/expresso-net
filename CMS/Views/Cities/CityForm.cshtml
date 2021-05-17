@@ -22,7 +22,7 @@
             <div class="card-body">
                 @using (@Html.BeginForm("Save", "Cities"))
                 {
-                    
+                    @Html.AntiForgeryToken()
                     @Html.HiddenFor(m => m.City.Id)
                     <div class="position-relative form-group">
                         @Html.LabelFor(m => m.City.Name)

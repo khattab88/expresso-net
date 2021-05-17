@@ -58,6 +58,7 @@ namespace CMS.Controllers
         }
 
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult Save(City city)
         {
             if (!ModelState.IsValid) 
