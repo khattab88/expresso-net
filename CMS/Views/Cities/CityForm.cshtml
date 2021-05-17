@@ -1,0 +1,41 @@
+﻿@model CMS.ViewModels.CityViewModel
+
+@{
+    ViewBag.Title = "New";
+}
+
+<div class="row">
+    <div class="col">
+        <div class="app-page-title mb-0 py-2">
+            <div class="page-title-wrapper">
+                <div class="page-title-heading">
+                    <h1>New City</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-lg-6">
+        <div class="main-card mb-3 mt-3 card">
+            <div class="card-body">
+                @using (@Html.BeginForm("Save", "Cities"))
+                {
+                    
+                    @Html.HiddenFor(m => m.City.Id)
+                    <div class="position-relative form-group">
+                        @Html.LabelFor(m => m.City.Name)
+                        @Html.TextBoxFor(m => m.City.Name, new { @class = "form-control", placeholder = "Name", required = true })
+                    </div>
+                    <div class="position-relative form-group">
+                        @Html.LabelFor(m => m.City.CountryId)
+                        @Html.DropDownListFor(m => m.City.CountryId, new SelectList(Model.Countries, "Id", "Name"), "Select Country", new { @class = "mb-2 form-control" })
+                    </div>
+                    <button class="mt-1 mr-2 btn btn-success">Sumbit</button>
+                    @Html.ActionLink("Cancel", "Index", "Cities", null, new { @class = "mt-1 btn btn-danger" })
+                }
+            </div>
+        </div>
+    </div>
+</div>
