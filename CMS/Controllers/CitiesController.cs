@@ -20,7 +20,7 @@ namespace CMS.Controllers
             _context = new ExpressoDbContext();
         }
 
-        // GET: Cities
+        
         public ActionResult Index()
         {
             var cities = _context.Cities.Include(c => c.Country).ToList();
@@ -34,7 +34,6 @@ namespace CMS.Controllers
 
             var cityViewModel = new CityViewModel
             {
-                City = new City(),
                 Countries = countries
             };
 
@@ -48,9 +47,8 @@ namespace CMS.Controllers
             if (city == null)
                 return HttpNotFound();
 
-            var cityViewModel = new CityViewModel
+            var cityViewModel = new CityViewModel(city)
             {
-                City = city,
                 Countries = _context.Countries.ToList()
             };
 
@@ -63,9 +61,8 @@ namespace CMS.Controllers
         {
             if (!ModelState.IsValid) 
             {
-                var customerViewModel = new CityViewModel
+                var customerViewModel = new CityViewModel(city)
                 {
-                    City = city,
                     Countries = _context.Countries.ToList()
                 };
 

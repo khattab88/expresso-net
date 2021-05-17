@@ -8,8 +8,25 @@ namespace CMS.ViewModels
 {
     public class CityViewModel
     {
-        public City City { get; set; }
+        public Guid Id { get; set; }
+
+        public string Name { get; set; }
+
+        public Guid CountryId { get; set; }
 
         public IEnumerable<Country> Countries { get; set; }
+
+
+        public CityViewModel()
+        {
+            Id = Guid.Empty;
+        }
+
+        public CityViewModel(City city)
+        {
+            Id = city.Id;
+            Name = city.Name;
+            CountryId = city.CountryId;
+        }
     }
 }

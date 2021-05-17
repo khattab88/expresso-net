@@ -1,7 +1,7 @@
 ﻿@model CMS.ViewModels.CityViewModel
 
 @{
-    ViewBag.Title = "New";
+    ViewBag.Title = Model.Id == Guid.Empty ?"New" :"Edit";
 }
 
 <div class="row">
@@ -9,7 +9,7 @@
         <div class="app-page-title mb-0 py-2">
             <div class="page-title-wrapper">
                 <div class="page-title-heading">
-                    <h1>New City</h1>
+                    <h1>@(Model.Id == Guid.Empty ?"New" :"Edit") City</h1>
                 </div>
             </div>
         </div>
@@ -23,17 +23,21 @@
                 @using (@Html.BeginForm("Save", "Cities"))
                 {
                     @Html.AntiForgeryToken()
-                    @Html.HiddenFor(m => m.City.Id)
+
+                    @Html.HiddenFor(m => m.Id)
+
                     <div class="position-relative form-group">
-                        @Html.LabelFor(m => m.City.Name)
-                        @Html.TextBoxFor(m => m.City.Name, new { @class = "form-control", placeholder = "Name", required = true })
-                        @Html.ValidationMessageFor(m => m.City.Name)
+                        @Html.LabelFor(m => m.Name)
+                        @Html.TextBoxFor(m => m.Name, new { @class = "form-control", placeholder = "Name", required = true })
+                        @Html.ValidationMessageFor(m => m.Name)
                     </div>
+
                     <div class="position-relative form-group">
-                        @Html.LabelFor(m => m.City.CountryId)
-                        @Html.DropDownListFor(m => m.City.CountryId, new SelectList(Model.Countries, "Id", "Name"), "Select Country", new { @class = "mb-2 form-control" })
-                        @Html.ValidationMessageFor(m => m.City.CountryId)
+                        @Html.LabelFor(m => m.CountryId)
+                        @Html.DropDownListFor(m => m.CountryId, new SelectList(Model.Countries, "Id", "Name"), "Select Country", new { @class = "mb-2 form-control" })
+                        @Html.ValidationMessageFor(m => m.CountryId)
                     </div>
+
                     <button class="mt-1 mr-2 btn btn-success">Sumbit</button>
                     @Html.ActionLink("Cancel", "Index", "Cities", null, new { @class = "mt-1 btn btn-danger" })
                 }
