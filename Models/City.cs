@@ -13,6 +13,8 @@ namespace Models
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public Guid Id { get; set; }
+
+        [Required(ErrorMessage = "Please enter a city name!")]
         public string Name { get; set; }
         public string Slug { get; set; }
 

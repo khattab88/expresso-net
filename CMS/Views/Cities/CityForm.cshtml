@@ -27,10 +27,12 @@
                     <div class="position-relative form-group">
                         @Html.LabelFor(m => m.City.Name)
                         @Html.TextBoxFor(m => m.City.Name, new { @class = "form-control", placeholder = "Name", required = true })
+                        @Html.ValidationMessageFor(m => m.City.Name)
                     </div>
                     <div class="position-relative form-group">
                         @Html.LabelFor(m => m.City.CountryId)
                         @Html.DropDownListFor(m => m.City.CountryId, new SelectList(Model.Countries, "Id", "Name"), "Select Country", new { @class = "mb-2 form-control" })
+                        @Html.ValidationMessageFor(m => m.City.CountryId)
                     </div>
                     <button class="mt-1 mr-2 btn btn-success">Sumbit</button>
                     @Html.ActionLink("Cancel", "Index", "Cities", null, new { @class = "mt-1 btn btn-danger" })

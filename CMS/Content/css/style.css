@@ -69,3 +69,14 @@ tr:hover {
   #tag-list .tag--selected {
     background-color: #27F0AC !important;
     color: #fff !important; }
+
+
+/*--------------------------------------------------------------*/
+
+.field-validation-error {
+    color: #f00;
+}
+
+.input-validation-error {
+    border: 2px solid #f00;
+}

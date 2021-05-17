@@ -59,6 +59,17 @@ namespace CMS.Controllers
         [HttpPost]
         public ActionResult Save(City city)
         {
+            if (!ModelState.IsValid) 
+            {
+                var customerViewModel = new CityViewModel
+                {
+                    City = city,
+                    Countries = _context.Countries.ToList()
+                };
+
+                return View("CityForm", customerViewModel);
+            }
+
             var slug = new SlugHelper().GenerateSlug(city.Name);
 
 
