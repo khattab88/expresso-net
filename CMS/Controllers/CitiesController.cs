@@ -34,6 +34,7 @@ namespace CMS.Controllers
 
             var cityViewModel = new CityViewModel
             {
+                City = new City(),
                 Countries = countries
             };
 
