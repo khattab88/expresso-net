@@ -1,7 +1,7 @@
-﻿@model CMS.ViewModels.CityViewModel
+﻿@model CMS.ViewModels.AreaViewModel
 
 @{
-    ViewBag.Title = Model.Id == Guid.Empty ?"New" :"Edit";
+    ViewBag.Title = Model.Id == Guid.Empty ? "New" : "Edit";
 }
 
 <div class="row">
@@ -9,7 +9,7 @@
         <div class="app-page-title mb-0 py-2">
             <div class="page-title-wrapper">
                 <div class="page-title-heading">
-                    <h1>@(Model.Id == Guid.Empty ?"New" :"Edit") City</h1>
+                    <h1>@(Model.Id == Guid.Empty ?"New" :"Edit") Area</h1>
                 </div>
             </div>
         </div>
@@ -20,7 +20,7 @@
     <div class="col-lg-6">
         <div class="main-card mb-3 mt-3 card">
             <div class="card-body">
-                @using (@Html.BeginForm("Save", "Cities"))
+                @using (@Html.BeginForm("Save", "Areas"))
                 {
                     @Html.AntiForgeryToken()
 
@@ -33,13 +33,13 @@
                     </div>
 
                     <div class="position-relative form-group">
-                        @Html.LabelFor(m => m.CountryId, "Country")
-                        @Html.DropDownListFor(m => m.CountryId, new SelectList(Model.Countries, "Id", "Name"), "Select Country", new { @class = "mb-2 form-control" })
-                        @Html.ValidationMessageFor(m => m.CountryId)
+                        @Html.LabelFor(m => m.CityId, "City")
+                        @Html.DropDownListFor(m => m.CityId, new SelectList(Model.Cities, "Id", "Name"), "Select City", new { @class = "mb-2 form-control" })
+                        @Html.ValidationMessageFor(m => m.CityId)
                     </div>
 
                     <button class="mt-1 mr-2 btn btn-success">Sumbit</button>
-                    @Html.ActionLink("Cancel", "Index", "Cities", null, new { @class = "mt-1 btn btn-danger" })
+                    @Html.ActionLink("Cancel", "Index", "Areas", null, new { @class = "mt-1 btn btn-danger" })
                 }
             </div>
         </div>
