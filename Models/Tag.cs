@@ -13,6 +13,8 @@ namespace Models
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public Guid Id { get; set; }
+
+        [Required(ErrorMessage = "Please enter a tag name!")]
         public string Name { get; set; }
 
         public virtual ICollection<Restaurant> Restaurants { get; set; }

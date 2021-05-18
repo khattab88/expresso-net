@@ -1,4 +1,5 @@
-﻿using Models;
+﻿using CMS.ViewModels;
+using Models;
 using Repositories;
 using System;
 using System.Collections.Generic;
@@ -27,7 +28,9 @@ namespace CMS.Controllers
 
         public ActionResult New() 
         {
-            return View();
+            var tagViewModel = new TagViewModel();
+
+            return View("TagForm", tagViewModel);
         }
 
         public ActionResult Edit(string id) 
@@ -37,7 +40,36 @@ namespace CMS.Controllers
             if (tag == null)
                 return HttpNotFound();
 
-            return View(tag);
+            var tagViewModel = new TagViewModel(tag);
+
+            return View("TagForm", tagViewModel);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Save(Tag tag) 
+        {
+            if (!ModelState.IsValid) 
+            {
+                var tagViewModel = new TagViewModel(tag);
+
+                return View("TagForm", tagViewModel);
+            }
+
+            if (tag.Id == Guid.Empty)
+            {
+                _context.Tags.Add(tag);
+            }
+            else 
+            {
+                var existingTag = _context.Tags.Single(t => t.Id == tag.Id);
+
+                existingTag.Name = tag.Name;
+            }
+
+            _context.SaveChanges();
+
+            return RedirectToAction("Index", "Tags");
         }
 
         protected override void Dispose(bool disposing)
