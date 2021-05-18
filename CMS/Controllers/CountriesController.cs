@@ -1,4 +1,7 @@
-﻿using Repositories;
+﻿using CMS.ViewModels;
+using Models;
+using Repositories;
+using Slugify;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -26,7 +29,9 @@ namespace CMS.Controllers
 
         public ActionResult New() 
         {
-            return View();
+            var countryViewModel = new CountryViewModel();
+
+            return View("CountryForm", countryViewModel);
         }
 
         public ActionResult Edit(string id) 
@@ -36,7 +41,45 @@ namespace CMS.Controllers
             if (country == null)
                 return HttpNotFound();
 
-            return View(country);
+            var countryViewModel = new CountryViewModel(country);
+
+
+            return View("CountryForm", countryViewModel);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Save(Country country) 
+        {
+            if (!ModelState.IsValid) 
+            {
+                var countryViewModel = new CountryViewModel(country);
+
+                return View("CountryForm", countryViewModel);
+            }
+
+            var slug = new SlugHelper().GenerateSlug(country.Name);
+
+            if (country.Id == Guid.Empty)
+            {
+                country.Slug = slug;
+
+                _context.Countries.Add(country);
+            }
+            else 
+            {
+                var existingCountry = _context.Countries.Single(c => c.Id == country.Id);
+
+                existingCountry.Name = country.Name;
+                existingCountry.Slug = slug;
+                existingCountry.Alias = country.Alias;
+                existingCountry.Currency = country.Currency;
+                // existingCountry.Image = country.Image;
+            }
+
+            _context.SaveChanges();
+
+            return RedirectToAction("Index", "Countries");
         }
     }
 }

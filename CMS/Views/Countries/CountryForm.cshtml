@@ -1,0 +1,58 @@
+﻿@model CMS.ViewModels.CountryViewModel
+
+@{
+    ViewBag.Title = Model.Id == Guid.Empty ? "New" : "Edit";
+}
+
+<div class="row">
+    <div class="col">
+        <div class="app-page-title mb-0 py-2">
+            <div class="page-title-wrapper">
+                <div class="page-title-heading">
+                    <h1>@(Model.Id == Guid.Empty ?"New" :"Edit") Country</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-lg-6">
+        <div class="main-card mb-3 mt-3 card">
+            <div class="card-body">
+                @using (@Html.BeginForm("Save", "Countries"))
+                {
+                    @Html.AntiForgeryToken()
+
+                    @Html.HiddenFor(m => m.Id)
+
+                    <div class="position-relative form-group">
+                        @Html.LabelFor(m => m.Name)
+                        @Html.TextBoxFor(m => m.Name, new { @class = "form-control", placeholder = "Name", required = true })
+                        @Html.ValidationMessageFor(m => m.Name)
+                    </div>
+
+                    <div class="position-relative form-group">
+                        @Html.LabelFor(m => m.Alias)
+                        @Html.TextBoxFor(m => m.Alias, new { @class = "form-control", placeholder = "Alias", required = true })
+                        @Html.ValidationMessageFor(m => m.Alias)
+                    </div>
+
+                    <div class="position-relative form-group">
+                        @Html.LabelFor(m => m.Currency)
+                        @Html.TextBoxFor(m => m.Currency, new { @class = "form-control", placeholder = "Currency", required = true })
+                        @Html.ValidationMessageFor(m => m.Currency)
+                    </div>
+
+                    <button class="mt-1 mr-2 btn btn-success">Sumbit</button>
+                    @Html.ActionLink("Cancel", "Index", "Countries", null, new { @class = "mt-1 btn btn-danger" })
+                }
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts
+{
+    @Scripts.Render("~/bundles/jqueryval")
+}
