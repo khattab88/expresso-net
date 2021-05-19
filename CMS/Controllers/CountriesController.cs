@@ -1,9 +1,11 @@
-﻿using CMS.ViewModels;
+﻿using CMS.Helpers;
+using CMS.ViewModels;
 using Models;
 using Repositories;
 using Slugify;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -49,7 +51,7 @@ namespace CMS.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Save(Country country) 
+        public ActionResult Save(Country country, IList<HttpPostedFileBase> files) 
         {
             if (!ModelState.IsValid) 
             {
@@ -58,10 +60,26 @@ namespace CMS.Controllers
                 return View("CountryForm", countryViewModel);
             }
 
+
+            // generate base64 string for image
+            string base64String = "";
+            if (files[0] != null)
+            {
+                string folder = Server.MapPath("~/Content/Images/Uploads/");
+                if (!Directory.Exists(folder))
+                {
+                    Directory.CreateDirectory(folder);
+                }
+
+                base64String = ImageHelper.GenerateBase64String(folder, files[0]);
+            }
+
+            // create slug
             var slug = new SlugHelper().GenerateSlug(country.Name);
 
             if (country.Id == Guid.Empty)
             {
+                country.Image = base64String;
                 country.Slug = slug;
 
                 _context.Countries.Add(country);
@@ -74,7 +92,7 @@ namespace CMS.Controllers
                 existingCountry.Slug = slug;
                 existingCountry.Alias = country.Alias;
                 existingCountry.Currency = country.Currency;
-                // existingCountry.Image = country.Image;
+                existingCountry.Image = base64String;
             }
 
             _context.SaveChanges();

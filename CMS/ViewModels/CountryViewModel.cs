@@ -15,6 +15,8 @@ namespace CMS.ViewModels
         public string Currency { get; set; }
         public string Image { get; set; }
 
+        // public HttpPostedFileBase UploadedImage { get; set; }
+
         public CountryViewModel()
         {
             Id = Guid.Empty;

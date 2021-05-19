@@ -20,7 +20,7 @@
     <div class="col-lg-6">
         <div class="main-card mb-3 mt-3 card">
             <div class="card-body">
-                @using (@Html.BeginForm("Save", "Countries"))
+                @using (@Html.BeginForm("Save", "Countries", FormMethod.Post, new { enctype = "multipart/form-data" }))
                 {
                     @Html.AntiForgeryToken()
 
@@ -42,6 +42,15 @@
                         @Html.LabelFor(m => m.Currency)
                         @Html.TextBoxFor(m => m.Currency, new { @class = "form-control", placeholder = "Currency", required = true })
                         @Html.ValidationMessageFor(m => m.Currency)
+                    </div>
+
+                    <div class="position-relative form-group">
+                        @Html.LabelFor(m => m.Image, "Choose new image")
+                        <img class="img-thumbnail" src="@Model.Image" alt="@Model.Name" />
+                        <div class="col-sm-10">
+                            <input type="file" name="files[0]" id="files_0" accept="image/*" />
+                            <small class="form-text text-muted">Image types supported (.jpg, .png, ...)</small>
+                        </div>
                     </div>
 
                     <button class="mt-1 mr-2 btn btn-success">Sumbit</button>
