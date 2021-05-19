@@ -78,7 +78,10 @@ namespace CMS.Controllers
 
             if (country.Id == Guid.Empty)
             {
-                country.Image = base64String;
+                if (base64String != "") 
+                {
+                    country.Image = base64String;
+                }
                 country.Slug = slug;
 
                 _context.Countries.Add(country);
@@ -91,7 +94,10 @@ namespace CMS.Controllers
                 existingCountry.Slug = slug;
                 existingCountry.Alias = country.Alias;
                 existingCountry.Currency = country.Currency;
-                existingCountry.Image = base64String;
+                if (base64String != "") 
+                {
+                    existingCountry.Image = base64String;
+                }
             }
 
             _context.SaveChanges();
