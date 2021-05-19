@@ -2,7 +2,6 @@
 using CMS.ViewModels;
 using Models;
 using Repositories;
-using Slugify;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -75,7 +74,7 @@ namespace CMS.Controllers
             }
 
             // create slug
-            var slug = new SlugHelper().GenerateSlug(country.Name);
+            var slug = SlugHelper.Generate(country.Name);
 
             if (country.Id == Guid.Empty)
             {
