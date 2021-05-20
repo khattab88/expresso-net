@@ -18,8 +18,10 @@ namespace Api
             config.Formatters.JsonFormatter.SupportedMediaTypes.Add(
                 new MediaTypeHeaderValue("application/json-patch+json"));
 
+            // remove xml response formatter
             config.Formatters.Remove(config.Formatters.XmlFormatter);
 
+            // add json response formatter
             var settings = GlobalConfiguration.Configuration.Formatters.JsonFormatter.SerializerSettings;
             settings.ContractResolver = new CamelCasePropertyNamesContractResolver();
             settings.Formatting = Newtonsoft.Json.Formatting.Indented;
