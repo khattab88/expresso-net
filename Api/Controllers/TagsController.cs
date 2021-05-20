@@ -1,4 +1,6 @@
-﻿using Marvin.JsonPatch;
+﻿using Api.Dtos;
+using AutoMapper;
+using Marvin.JsonPatch;
 using Models;
 using Repositories;
 using System;
@@ -22,13 +24,16 @@ namespace Api.Controllers
         }
 
 
+        [ResponseType(typeof(IEnumerable<TagDto>))]
         public IHttpActionResult Get()
         {
             try
             {
                 var tags = _context.Tags.ToList();
 
-                return Ok(tags);
+                var dto = Mapper.Map<IEnumerable<Tag>, IEnumerable<TagDto>>(tags);
+
+                return Ok(dto);
             }
             catch (Exception ex)
             {
@@ -37,16 +42,19 @@ namespace Api.Controllers
             }
         }
 
+        [ResponseType(typeof(TagDto))]
         public IHttpActionResult Get(string id) 
         {
             try
             {
                 var tag = _context.Tags.SingleOrDefault(t => t.Id.ToString() == id);
 
+                var dto = Mapper.Map<Tag, TagDto>(tag);
+
                 if (tag == null)
                     return NotFound();
 
-                return Ok(tag);
+                return Ok(dto);
             }
             catch (Exception ex)
             {
@@ -56,18 +64,22 @@ namespace Api.Controllers
         }
 
         [HttpPost]
-        [ResponseType(typeof(Tag))]
-        public IHttpActionResult Create(Tag tag) 
+        [ResponseType(typeof(TagDto))]
+        public IHttpActionResult Create(TagDto dto) 
         {
             try
             {
-                if (tag == null || !ModelState.IsValid)
+                if (dto == null || !ModelState.IsValid)
                     return BadRequest();
+
+                var tag = Mapper.Map<TagDto, Tag>(dto);
 
                 _context.Tags.Add(tag);
                 _context.SaveChanges();
 
-                return Created(string.Format("{0}/{1}", Request.RequestUri, tag.Id), tag);
+                dto = Mapper.Map<Tag, TagDto>(tag);
+
+                return Created(string.Format("{0}/{1}", Request.RequestUri, tag.Id), dto);
             }
             catch (Exception ex)
             {
@@ -77,11 +89,11 @@ namespace Api.Controllers
 
         [HttpPut]
         [ResponseType(typeof(void))]
-        public IHttpActionResult Update(string id, Tag tag)
+        public IHttpActionResult Update(string id, TagDto dto)
         {
             try
             {
-                if (tag == null || !ModelState.IsValid || id != tag.Id.ToString())
+                if (dto == null || !ModelState.IsValid || id != dto.Id.ToString())
                 {
                     return BadRequest();
                 }
@@ -91,7 +103,8 @@ namespace Api.Controllers
                 if (existingTag == null)
                     return NotFound();
 
-                existingTag.Name = tag.Name;
+                // existingTag.Name = dto.Name;
+                Mapper.Map<TagDto, Tag>(dto, existingTag);
 
                 _context.SaveChanges();
 
