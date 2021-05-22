@@ -32,7 +32,7 @@ namespace CMS
                 //"~/Scripts/checkout.js",
                 //"~/Scripts/config.js",
                 //"~/Scripts/country.js",
-                "~/Scripts/delete-list-item.js"
+                // "~/Scripts/delete-list-item.js"
                 //"~/Scripts/login.js",
                 //"~/Scripts/mapbox.js",
                 //"~/Scripts/index.js"
