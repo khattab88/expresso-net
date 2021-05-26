@@ -79,7 +79,7 @@
                                             </button>
                                             <button type="button" tabindex="0" class="dropdown-item">Settings</button>
                                             <div tabindex="-1" class="dropdown-divider"></div>
-                                            <a href="javascript:document.getElementById('logoutForm').submit()">Log off</a>
+                                            <a id="logout-btn" href="javascript:document.getElementById('logoutForm').submit()">Log off</a>
                                         </div>
                                     </div>
                                 </div>
@@ -88,8 +88,8 @@
                         else
                         {
                             <ul class="nav navbar-nav navbar-right">
-                                <li>@Html.ActionLink("Register", "Register", "Account", routeValues: null, htmlAttributes: new { id = "registerLink" })</li>
-                                <li>@Html.ActionLink("Log in", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink" })</li>
+                                <li>@Html.ActionLink("Register", "Register", "Account", routeValues: null, htmlAttributes: new { id = "registerLink", @class="nav-btn" })</li>
+                                <li>@Html.ActionLink("Log in", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink", @class = "nav-btn" })</li>
                             </ul>
                         }
                     </div>

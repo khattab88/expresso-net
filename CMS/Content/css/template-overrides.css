@@ -36,3 +36,35 @@
 .list-group-item {
     padding: .25rem .5rem;
 }
+
+/*-----------------------------------------*/
+
+/* (AUTH STYLES) */
+
+.navbar-nav {
+    flex-direction: row;
+}
+
+.nav-btn {
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 5px;
+    margin: 5px;
+    color: #fff;
+    background-color: #55f;
+    text-decoration: none;
+}
+
+.nav-btn:hover {
+    color: #fff;
+    text-decoration: none;
+}
+
+#logoutForm {
+    display: flex;
+}
+
+#logout-btn {
+    color: #000;
+    margin-left: 25px;
+}
