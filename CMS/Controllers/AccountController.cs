@@ -3,7 +3,7 @@ using CMS.Models;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
-using Models;
+using ExpressoModels = Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -152,13 +152,14 @@ namespace CMS.Controllers
         {
             if (ModelState.IsValid)
             {
-                var user = new User
+                var user = new ExpressoModels.User
                 {
                     UserName = model.Email,
                     Email = model.Email,
                     FirstName = model.FirstName,
                     LastName = model.LastName,
-                    PhoneNumber = model.PhoneNumber
+                    PhoneNumber = model.PhoneNumber,
+                    Role = ExpressoModels.Enums.UserRole.Admin
                 };
 
                 var result = await UserManager.CreateAsync(user, model.Password);
@@ -376,7 +377,7 @@ namespace CMS.Controllers
                 {
                     return View("ExternalLoginFailure");
                 }
-                var user = new User { UserName = model.Email, Email = model.Email };
+                var user = new ExpressoModels.User { UserName = model.Email, Email = model.Email };
                 var result = await UserManager.CreateAsync(user);
                 if (result.Succeeded)
                 {
