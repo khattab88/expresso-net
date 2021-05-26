@@ -8,6 +8,7 @@ using System.Web.Mvc;
 
 namespace CMS.Controllers
 {
+    [AllowAnonymous]
     public class HomeController : Controller
     {
         private readonly ExpressoDbContext _context;
